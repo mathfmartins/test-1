@@ -1,11 +1,10 @@
 import { UniqueIdService } from './unique-id.service';
 
 describe(UniqueIdService.name, () => {
-
   let service: UniqueIdService = null;
   beforeEach(() => {
     service = new UniqueIdService();
-  })
+  });
 
   it(`#${UniqueIdService.prototype.generatedUniqueIdWithPrefix.name} should generated id when called with prefix`, () => {
     const id = service.generatedUniqueIdWithPrefix('app');
@@ -24,8 +23,9 @@ describe(UniqueIdService.name, () => {
     service.generatedUniqueIdWithPrefix('app');
     service.generatedUniqueIdWithPrefix('app');
     expect(service.numberOfGeneratedUniqueIds()).toBe(2);
-  })
+  });
+
+  it(`#${UniqueIdService.prototype.generatedUniqueIdWithPrefix.name} should throw exception when called with empty`, () => {
+    expect(() => service.generatedUniqueIdWithPrefix(null)).toThrow();
+  });
 });
-
-
-
