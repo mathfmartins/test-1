@@ -1,25 +1,24 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UniqueIdService } from './../../services/unique-id/unique-id.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LikeWidgetComponent } from './like-widget.component';
 
-describe('LikeWidgetComponent', () => {
-  let component: LikeWidgetComponent;
-  let fixture: ComponentFixture<LikeWidgetComponent>;
+describe(LikeWidgetComponent.name, () => {
+    let fixture: ComponentFixture<LikeWidgetComponent> = null;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LikeWidgetComponent ]
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        declarations: [LikeWidgetComponent],
+        providers: [UniqueIdService],
+        imports: [FontAwesomeModule]
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(LikeWidgetComponent);
+    });
+
+    it('Should create component', () => {
+      let instance = fixture.componentInstance;
+      expect(instance).toBeTruthy();
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LikeWidgetComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
