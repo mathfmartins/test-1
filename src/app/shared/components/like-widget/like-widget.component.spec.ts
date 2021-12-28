@@ -40,9 +40,10 @@ describe(LikeWidgetComponent.name, () => {
     expect(component.id).toBe(someId);
   });
 
-  it(`#${LikeWidgetComponent.prototype.like.name} Should trigger emission when called`, () => {
+  it(`#${LikeWidgetComponent.prototype.like.name} Should trigger emission when called`, done => {
     component.liked.subscribe(() => {
-      expect(true).toBe(true);
+      expect(true).toBeTrue();
+      done()
     })
     component.like();
   })
